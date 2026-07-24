@@ -1,0 +1,1 @@
+const j=require('jsonwebtoken');module.exports=(req,res,next)=>{const t=req.headers.authorization?.split(' ')[1];if(!t)return res.sendStatus(401);try{req.user=j.verify(t,process.env.JWT_SECRET);next();}catch{res.sendStatus(403);}}
